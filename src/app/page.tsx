@@ -20,14 +20,29 @@ export default function HomePage() {
   const [searchPrefill, setSearchPrefill] = useState<string>("");
 
   const loadItems = async () => {
+    let localList: Item[] = [];
+    try {
+      const stored = localStorage.getItem("household_user_items");
+      if (stored) localList = JSON.parse(stored);
+    } catch {
+      // ignore
+    }
+
     try {
       const res = await fetch("/api/items");
       const data = await res.json();
       if (data.items) {
-        setItems(data.items);
+        const serverIds = new Set(data.items.map((i: Item) => i.id));
+        const merged = [...data.items, ...localList.filter((i: Item) => !serverIds.has(i.id))];
+        setItems(merged);
+        return;
       }
     } catch (e) {
       console.error("Failed to load items:", e);
+    }
+
+    if (localList.length > 0) {
+      setItems(localList);
     }
   };
 
@@ -70,7 +85,17 @@ export default function HomePage() {
   };
 
   const handleCaptureSuccess = (newItems: Item[]) => {
-    setItems((prev) => [...newItems, ...prev]);
+    setItems((prev) => {
+      const existingIds = new Set(prev.map((i) => i.id));
+      const filteredNew = newItems.filter((i) => !existingIds.has(i.id));
+      const updated = [...filteredNew, ...prev];
+      try {
+        localStorage.setItem("household_user_items", JSON.stringify(updated));
+      } catch (err) {
+        console.warn("LocalStorage save warning:", err);
+      }
+      return updated;
+    });
     setActiveTab("browse");
   };
 

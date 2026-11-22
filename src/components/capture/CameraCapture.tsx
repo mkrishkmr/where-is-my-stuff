@@ -10,8 +10,8 @@ interface CameraCaptureProps {
   isDemoMode: boolean;
 }
 
-// Client-side lightweight image compressor (resizes to max 1024px, JPEG 0.82 quality)
-function compressImage(file: File, maxDim = 1024, quality = 0.82): Promise<string> {
+// Client-side lightweight image compressor (resizes to max 640px, JPEG 0.72 quality for fast, reliable storage)
+function compressImage(file: File, maxDim = 640, quality = 0.72): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onerror = reject;

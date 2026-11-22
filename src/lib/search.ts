@@ -42,9 +42,18 @@ function localKeywordSearch(query: string, items: Item[]): { matches: Item[]; an
 export async function searchBelongingsHumanlike(
   query: string,
   userEmail: string = "alex@family.com",
-  isDemo: boolean = false
+  isDemo: boolean = false,
+  clientItems?: Item[]
 ): Promise<SearchQueryResponse> {
-  const items = getStoredItems();
+  const stored = getStoredItems();
+  
+  // Merge client-provided items with stored items, deduplicating by ID
+  let items = stored;
+  if (clientItems && clientItems.length > 0) {
+    const existingIds = new Set(stored.map((i) => i.id));
+    const uniqueClientItems = clientItems.filter((i) => !existingIds.has(i.id));
+    items = [...uniqueClientItems, ...stored];
+  }
 
   if (items.length === 0) {
     return {

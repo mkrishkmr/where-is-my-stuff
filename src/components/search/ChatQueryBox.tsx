@@ -35,6 +35,14 @@ export const ChatQueryBox: React.FC<ChatQueryBoxProps> = ({
 
     setIsLoading(true);
     try {
+      let clientItems: Item[] = [];
+      try {
+        const stored = localStorage.getItem("household_user_items");
+        if (stored) clientItems = JSON.parse(stored);
+      } catch {
+        // ignore
+      }
+
       const res = await fetch("/api/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -42,6 +50,7 @@ export const ChatQueryBox: React.FC<ChatQueryBoxProps> = ({
           query: queryText.trim(),
           userEmail,
           isDemo: isDemoMode,
+          clientItems,
         }),
       });
       const data = await res.json();
