@@ -242,19 +242,6 @@ When an item is lent out or temporarily moved, the user starts a return timer fr
 
 Escalation is **stateless and idempotent**: tiers are derived from timestamps on every request. No background workers are needed, so the logic stays reliable on serverless deployments.
 
-### 3.3 Flight Departure Passport Check ✈️
-
-This is a context-aware safety net for travel-critical documents.
-
-1. The user adds an upcoming trip with a departure date and time.
-2. Items tagged `travel_critical` (passport, visa, boarding documents, forex card) are checked automatically.
-3. At **T−48h** and **T−6h**, `/api/nudge` returns a checklist nudge:
-
-   > 🛂 **Flight in 6 hours.** Your passport was last seen in *Bedroom → Wardrobe → Top drawer*. Confirm it's packed?
-
-4. If any travel-critical item has an **active loan or unknown location**, the nudge escalates to 🔴 immediately.
-5. Confirming "Packed" sets each item's location to `Travel bag` with a return timer that ends at the trip's return date.
-
 ---
 
 ## 👨‍👩‍👧 Phase 4: Connected Household & Family Share
