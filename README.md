@@ -12,6 +12,7 @@
 [![AI](https://img.shields.io/badge/AI-Claude_Opus_5.5_via_Divyam-D97757)](#-frontier-ai-integration)
 [![Tests](https://img.shields.io/badge/tests-19%2F19_passing-brightgreen)](#-verified-test-suite)
 [![Mobile First](https://img.shields.io/badge/design-mobile--first-ff69b4)](#)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmkrishkmr%2Fwhere-is-my-stuff&env=DIVYAM_API_KEY,DIVYAM_BASE_URL,DIVYAM_CHAT_MODEL&envDescription=Divyam%20Claude%20Opus%205.5%20API%20Credentials&project-name=where-is-my-stuff&repository-name=where-is-my-stuff)
 
 [Vision](#-project-vision) •
 [Phases](#-the-four-product-phases) •
