@@ -6,7 +6,7 @@ export async function GET() {
   const items = getStoredItems();
   const nudges: ProactiveNudge[] = [];
 
-  // 1. Check for borrowed items with active or expired return timers
+  // Check for borrowed items with active or expired return timers
   const borrowedItems = items.filter((i) => i.borrowedBy && i.returnTimerExpiresAt);
   borrowedItems.forEach((item) => {
     const isExpired = new Date(item.returnTimerExpiresAt!).getTime() < Date.now();
@@ -22,19 +22,5 @@ export async function GET() {
     });
   });
 
-  // 2. Proactive Calendar Event (Passport Alert)
-  const passport = items.find((i) => i.name.toLowerCase().includes("passport"));
-  nudges.push({
-    id: "nudge-flight-london",
-    title: "Upcoming Travel Context",
-    triggerEvent: "Flight AI 102 to London Heathrow tomorrow at 06:30 AM",
-    suggestedItemName: "Passport",
-    item: passport,
-    alertText: passport
-      ? `Found your passport in ${passport.location} (${passport.room}). Verified and ready for travel.`
-      : "You have an upcoming flight. Don't forget to photograph and log your passport location.",
-  });
-
   return NextResponse.json({ nudges });
 }
-
