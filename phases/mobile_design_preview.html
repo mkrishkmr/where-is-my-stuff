@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where Is My Stuff — Google-Tier Mobile UI Design Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.08); opacity: 0.4; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .shutter-glow { animation: pulse-ring 2.5s infinite ease-in-out; }
+    .glass-dock {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    /* Mobile Device Frame styling */
+    .phone-frame {
+      width: 390px;
+      height: 820px;
+      border-radius: 48px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 12px #1e293b, 0 0 0 14px #0f172a;
+    }
+  </style>
+</head>
+<body class="bg-[#030712] text-slate-100 font-sans min-h-screen flex flex-col items-center justify-center p-4">
+
+  <!-- Header Controls -->
+  <div class="max-w-4xl w-full flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+    <div>
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl">📱</span>
+        <h1 class="text-xl font-extrabold text-white">Google-Tier Mobile UI Design Preview</h1>
+      </div>
+      <p class="text-xs text-slate-400 mt-0.5">Designed with Divyam Claude Opus 5.5 • Pixel UI / Material 3 Dark Theme</p>
+    </div>
+
+    <!-- Screen Switcher Pills -->
+    <div class="flex bg-slate-900 p-1 rounded-2xl border border-slate-800">
+      <button onclick="setScreen('search')" id="btn-search" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white transition-all shadow">
+        1. Search & Recall
+      </button>
+      <button onclick="setScreen('capture')" id="btn-capture" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition-all">
+        2. 1-Tap Capture
+      </button>
+      <button onclick="setScreen('inventory')" id="btn-inventory" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition-all">
+        3. Timers & Household
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Device Simulation Frame -->
+  <div class="phone-frame bg-[#080D1A] overflow-hidden relative flex flex-col border border-slate-800">
+
+    <!-- Status Bar / Dynamic Island Area -->
+    <div class="h-11 px-7 flex items-center justify-between text-[11px] font-semibold text-slate-400 shrink-0 z-20">
+      <span>09:41</span>
+      <!-- Dynamic Island Pill -->
+      <div class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[10px] text-indigo-300 flex items-center space-x-1.5 shadow-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>The Sharma Household</span>
+      </div>
+      <div class="flex items-center space-x-1 text-xs">
+        <span>5G</span>
+        <span>100%</span>
+      </div>
+    </div>
+
+    <!-- SCREEN 1: NATURAL RECALL & SEARCH -->
+    <div id="screen-search" class="flex-1 flex flex-col p-4 space-y-4 overflow-y-auto pb-24">
+      
+      <!-- Proactive Travel Context Chip -->
+      <div class="p-3 rounded-2xl bg-gradient-to-r from-indigo-950/70 to-purple-950/50 border border-indigo-500/30 flex items-center justify-between">
+        <div class="flex items-center space-x-2.5">
+          <span class="text-xl">✈️</span>
+          <div>
+            <div class="text-[11px] font-bold text-white">Flight AI 102 Tomorrow</div>
+            <div class="text-[10px] text-slate-300">Passport verified in Hallway console</div>
+          </div>
+        </div>
+        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Safe</span>
+      </div>
+
+      <!-- Google-Style Floating Search Pill -->
+      <div class="space-y-2">
+        <div class="relative flex items-center">
+          <div class="absolute left-3.5 text-indigo-400 text-sm">✨</div>
+          <input
+            type="text"
+            readonly
+            value="that black cable for connecting my laptop to the TV"
+            class="w-full h-13 pl-9 pr-10 py-3 bg-slate-900/90 border border-slate-700/80 rounded-full text-xs text-white placeholder-slate-400 shadow-lg shadow-black/40 focus:outline-none"
+          />
+          <div class="absolute right-3.5 w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center text-[10px] text-white">
+            ➔
+          </div>
+        </div>
+
+        <!-- Tactile Suggestion Chips -->
+        <div class="flex space-x-1.5 overflow-x-auto pb-1 text-[11px]">
+          <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 whitespace-nowrap">"where are spare keys"</span>
+          <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 whitespace-nowrap">"passport for flight"</span>
+          <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 whitespace-nowrap">"bedroom phone charger"</span>
+        </div>
+      </div>
+
+      <!-- Result Card: Ultra-Clean Google Tier Polish -->
+      <div class="rounded-3xl bg-[#0F172A] border border-slate-800 p-4 space-y-3.5 shadow-xl">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2.5 py-0.5 rounded-full border border-indigo-500/20">
+            OFFICE
+          </span>
+          <span class="text-[10px] text-slate-500">Verified Yesterday</span>
+        </div>
+
+        <div>
+          <h3 class="text-base font-bold text-white">Braided HDMI 2.1 Cable</h3>
+          <!-- Exact Location Breadcrumb -->
+          <div class="mt-2 p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center space-x-2 text-xs font-semibold text-emerald-300">
+            <span>📍</span>
+            <span class="truncate">Office desk drawer, left compartment</span>
+          </div>
+        </div>
+
+        <!-- Conversational Quote from Opus 5.5 -->
+        <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-xs text-slate-300 italic">
+          "It's right in the left drawer of your office desk, coiled in the rear compartment next to the USB-C dock."
+        </div>
+
+        <!-- Photo Proof Card with Zoom Badge -->
+        <div class="relative rounded-2xl overflow-hidden aspect-video bg-black">
+          <img
+            src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80"
+            alt="HDMI Cable"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full bg-black/70 backdrop-blur text-[10px] text-white font-medium border border-white/10">
+            Photo Proof • 0ms Match
+          </div>
+        </div>
+
+        <!-- 1-Click Borrow & Family Share Actions -->
+        <div class="flex items-center justify-between pt-1">
+          <div class="flex items-center space-x-1">
+            <span class="text-[10px] text-slate-400 font-medium">Borrow:</span>
+            <button class="px-2.5 py-1 rounded-lg bg-slate-800 text-[10px] font-bold text-indigo-300 border border-slate-700">1h</button>
+            <button class="px-2.5 py-1 rounded-lg bg-slate-800 text-[10px] font-bold text-indigo-300 border border-slate-700">24h</button>
+          </div>
+          <button class="px-3 py-1.5 rounded-xl bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 text-xs font-semibold flex items-center space-x-1">
+            <span>💬 Share Link</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SCREEN 2: 1-TAP CAMERA CAPTURE -->
+    <div id="screen-capture" class="hidden flex-1 flex flex-col p-4 relative pb-24">
+      <div class="text-center space-y-0.5 mb-2">
+        <h2 class="text-sm font-bold text-white">1-Tap Location Capture</h2>
+        <p class="text-[11px] text-slate-400">Aim, tap location pill, snap. Zero typing.</p>
+      </div>
+
+      <!-- Viewfinder Simulation -->
+      <div class="flex-1 rounded-3xl overflow-hidden bg-black relative border-2 border-slate-800 flex flex-col justify-between p-4">
+        <!-- Reticle Corners -->
+        <div class="absolute inset-4 border-2 border-white/20 rounded-2xl pointer-events-none flex flex-col justify-between p-3">
+          <div class="flex justify-between">
+            <span class="w-4 h-4 border-t-2 border-l-2 border-pink-500"></span>
+            <span class="w-4 h-4 border-t-2 border-r-2 border-pink-500"></span>
+          </div>
+          <div class="text-center text-[10px] font-mono text-pink-400/80 bg-black/60 px-2 py-0.5 rounded-full mx-auto">
+            OPUS 5.5 MULTI-ITEM DETECTION READY
+          </div>
+          <div class="flex justify-between">
+            <span class="w-4 h-4 border-b-2 border-l-2 border-pink-500"></span>
+            <span class="w-4 h-4 border-b-2 border-r-2 border-pink-500"></span>
+          </div>
+        </div>
+
+        <div class="text-right z-10">
+          <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur text-[10px] text-white">⚡ Flash Auto</span>
+        </div>
+
+        <!-- Thumb Zone Pill Strip Anchored Above Shutter -->
+        <div class="space-y-3 z-10 mb-2">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-white/90 text-center drop-shadow">
+            Tap Location Pill (Thumb Zone):
+          </div>
+          <div class="flex space-x-1.5 overflow-x-auto pb-1">
+            <button class="px-3 py-1.5 rounded-xl bg-pink-600 text-white text-xs font-bold shadow-lg shadow-pink-600/40 shrink-0">
+              🛋 Living Room ➔ TV Media
+            </button>
+            <button class="px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur text-slate-300 border border-white/20 text-xs font-medium shrink-0">
+              💼 Office ➔ Desk Left
+            </button>
+            <button class="px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur text-slate-300 border border-white/20 text-xs font-medium shrink-0">
+              🚪 Hallway ➔ Top Drawer
+            </button>
+          </div>
+
+          <!-- Glowing Shutter Button -->
+          <div class="flex justify-center pt-1">
+            <div class="relative flex items-center justify-center">
+              <div class="absolute w-20 h-20 rounded-full bg-pink-500/20 shutter-glow"></div>
+              <button class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 p-1 shadow-xl shadow-pink-500/40 flex items-center justify-center">
+                <div class="w-13 h-13 rounded-full border-2 border-white flex items-center justify-center text-white text-xl">
+                  📸
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: INVENTORY & RETURN TIMERS -->
+    <div id="screen-inventory" class="hidden flex-1 flex flex-col p-4 space-y-3.5 overflow-y-auto pb-24">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-sm font-bold text-white">Sharma Household Catalog</h2>
+          <p class="text-[10px] text-slate-400">12 items tracked • 1 active loan</p>
+        </div>
+        <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">All Rooms</span>
+      </div>
+
+      <!-- Active Overdue Alert Card -->
+      <div class="rounded-2xl bg-rose-950/50 border border-rose-500/40 p-3.5 space-y-2">
+        <div class="flex items-center justify-between text-xs">
+          <span class="font-bold text-rose-300 flex items-center space-x-1">
+            <span>⏰</span>
+            <span>Return Due: Time to Put It Back</span>
+          </span>
+          <span class="text-[10px] font-mono text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded">Overdue 5m</span>
+        </div>
+        <p class="text-xs text-rose-200/90 leading-tight">
+          Hey Alex! Time to return <strong>"Braided HDMI 2.1 Cable"</strong> back to Office desk drawer.
+        </p>
+        <button class="w-full py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow transition-all">
+          ✓ Mark Returned to Spot
+        </button>
+      </div>
+
+      <!-- Normal Catalog Card with Return Timer Bar -->
+      <div class="rounded-2xl bg-[#0F172A] border border-slate-800 p-3 flex space-x-3">
+        <img
+          src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80"
+          alt="Passport"
+          class="w-18 h-18 rounded-xl object-cover shrink-0"
+        />
+        <div class="flex-1 space-y-1">
+          <div class="flex justify-between items-start">
+            <span class="text-xs font-bold text-white">Passport (Blue Cover)</span>
+            <span class="text-[9px] font-bold text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded">HALLWAY</span>
+          </div>
+          <div class="text-[11px] text-emerald-400 font-medium">📍 Hallway console, top drawer</div>
+          <div class="flex justify-between items-center pt-1 text-[10px]">
+            <span class="text-slate-400">Borrow timer: <strong>Safe in spot</strong></span>
+            <button class="text-indigo-400 font-bold hover:underline">Share Link</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Card -->
+      <div class="rounded-2xl bg-[#0F172A] border border-slate-800 p-3 flex space-x-3">
+        <img
+          src="https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=600&q=80"
+          alt="Keys"
+          class="w-18 h-18 rounded-xl object-cover shrink-0"
+        />
+        <div class="flex-1 space-y-1">
+          <div class="flex justify-between items-start">
+            <span class="text-xs font-bold text-white">Spare House Keys</span>
+            <span class="text-[9px] font-bold text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded">KITCHEN</span>
+          </div>
+          <div class="text-[11px] text-emerald-400 font-medium">📍 Kitchen key bowl near entrance</div>
+          <div class="flex justify-between items-center pt-1 text-[10px]">
+            <span class="text-slate-400">Borrow timer: <strong>Available</strong></span>
+            <button class="text-indigo-400 font-bold hover:underline">Share Link</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FLOATING BOTTOM PILL DOCK (Google Pixel Ergononmics) -->
+    <div class="absolute bottom-4 left-4 right-4 h-16 rounded-full glass-dock border border-slate-700/60 shadow-2xl flex items-center justify-around px-3 z-30">
+      
+      <!-- Tab 1: Search -->
+      <button onclick="setScreen('search')" id="dock-search" class="flex flex-col items-center space-y-0.5 text-indigo-400">
+        <span class="text-lg">🔍</span>
+        <span class="text-[10px] font-bold">Ask & Find</span>
+      </button>
+
+      <!-- Center Elevated Shutter Action -->
+      <div class="relative -top-5">
+        <button onclick="setScreen('capture')" class="w-14 h-14 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg shadow-pink-500/40 border-4 border-[#080D1A] flex items-center justify-center text-xl hover:scale-105 transition-transform">
+          📸
+        </button>
+      </div>
+
+      <!-- Tab 3: Household -->
+      <button onclick="setScreen('inventory')" id="dock-inventory" class="flex flex-col items-center space-y-0.5 text-slate-400 hover:text-white">
+        <span class="text-lg">🏡</span>
+        <span class="text-[10px] font-semibold">Household</span>
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Footer Info & Approval Note -->
+  <div class="text-center mt-6 space-y-1">
+    <p class="text-xs text-slate-400">
+      Reviewing Google-tier mobile web UI layout. Click the tabs above to toggle between the 3 core views.
+    </p>
+    <p class="text-[11px] text-indigo-400 font-semibold">
+      Awaiting your approval to apply this visual polish to the live Next.js codebase.
+    </p>
+  </div>
+
+  <script>
+    function setScreen(s) {
+      ['search', 'capture', 'inventory'].forEach(id => {
+        document.getElementById('screen-' + id).classList.add('hidden');
+        document.getElementById('btn-' + id).className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition-all';
+      });
+      document.getElementById('screen-' + s).classList.remove('hidden');
+      document.getElementById('btn-' + s).className = 'px-3.5 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white transition-all shadow';
+
+      // Update dock colors
+      document.getElementById('dock-search').className = s === 'search' ? 'flex flex-col items-center space-y-0.5 text-indigo-400' : 'flex flex-col items-center space-y-0.5 text-slate-400 hover:text-white';
+      document.getElementById('dock-inventory').className = s === 'inventory' ? 'flex flex-col items-center space-y-0.5 text-indigo-400' : 'flex flex-col items-center space-y-0.5 text-slate-400 hover:text-white';
+    }
+  </script>
+</body>
+</html>

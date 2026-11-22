@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 4 Architecture Explainer — Connected Household Family Share</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { background-color: #070b14; color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  </style>
+</head>
+<body class="p-4 sm:p-8 max-w-5xl mx-auto space-y-8">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 pb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div>
+      <div class="flex items-center space-x-2">
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+          Phase 4 Architecture
+        </span>
+        <span class="text-xs text-slate-400">• Powered by Divyam Claude Opus 5.5</span>
+      </div>
+      <h1 class="text-3xl font-extrabold text-white mt-2 tracking-tight">The "Connected Household" Family Share</h1>
+      <p class="text-sm text-slate-400 mt-1">
+        Email-walled transparency &bull; 1-click profile switching &bull; Deep-linked instant item lookup.
+      </p>
+    </div>
+    <div class="flex items-center space-x-2 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="font-medium text-slate-300">Phase 4 Target: Shared Domestic Map</span>
+    </div>
+  </header>
+
+  <!-- Section 1: The Household Memory Keeper Problem -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="bg-rose-950/20 border border-rose-500/30 rounded-2xl p-5 space-y-2">
+      <div class="flex items-center space-x-2 text-rose-400 font-bold text-sm">
+        <i class="fa-solid fa-comments-dollar"></i>
+        <span>The Single-Memory Bottleneck</span>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        In most homes, one person knows where everything lives. Everyone else depends on them, causing recurring interruptions:
+        <em>"Where is the spare house key?"</em> texted during meetings, followed by verbal ambiguity: <em>"In the drawer"</em> (which drawer?).
+      </p>
+    </div>
+
+    <div class="bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-5 space-y-2">
+      <div class="flex items-center space-x-2 text-emerald-400 font-bold text-sm">
+        <i class="fa-solid fa-share-nodes"></i>
+        <span>The 1-Click Family Share Solution</span>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Turning one person's visual memory into a shared household resource. A family member clicks <strong>"Share with Family"</strong>, sends a direct link via WhatsApp or iMessage, 
+        and the recipient sees the exact room, drawer, and photo proof in under 1 second.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 2: Interactive Cross-Family Member Simulator -->
+  <section class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
+    <div class="border-b border-slate-800 pb-4">
+      <h2 class="text-lg font-bold text-white flex items-center space-x-2">
+        <i class="fa-solid fa-users text-emerald-400"></i>
+        <span>Interactive Cross-Family Member Simulator</span>
+      </h2>
+      <p class="text-xs text-slate-400">See how Alex shares an item link and how Sarah instantly opens it on her phone.</p>
+    </div>
+
+    <!-- Dual View Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+      
+      <!-- Side A: Alex (Sender) -->
+      <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+          <div class="flex items-center space-x-2">
+            <div class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-bold">A</div>
+            <span class="text-xs font-bold text-white">Alex's Screen (alex@family.com)</span>
+          </div>
+          <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded">Sender</span>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold uppercase text-indigo-400">Hallway Console</span>
+            <span class="text-[10px] text-slate-400">Top Drawer</span>
+          </div>
+          <div class="font-bold text-sm text-white">Passport (Blue Cover)</div>
+          <p class="text-xs text-slate-400">Standard navy blue passport with gold emblem.</p>
+          <button id="shareActionBtn" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-lg flex items-center justify-center space-x-1.5 shadow-md transition-all">
+            <i class="fa-solid fa-share-nodes text-xs"></i>
+            <span>Share Location Link</span>
+          </button>
+        </div>
+
+        <!-- WhatsApp Preview Simulation -->
+        <div id="waPreview" class="hidden bg-emerald-950/30 border border-emerald-500/30 rounded-xl p-3 space-y-1 text-xs">
+          <div class="text-[10px] text-emerald-400 font-bold flex items-center space-x-1">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Simulated WhatsApp Message Sent to Sarah:</span>
+          </div>
+          <div class="text-slate-200 bg-slate-900 p-2 rounded border border-slate-800 font-mono text-[11px] leading-relaxed">
+            "Hey! Here is where we keep the Passport: Hallway console, top drawer. View photo proof here: <span class="text-indigo-400 underline">localhost:3000?item=item-1</span>"
+          </div>
+        </div>
+      </div>
+
+      <!-- Side B: Sarah (Recipient) -->
+      <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+          <div class="flex items-center space-x-2">
+            <div class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-bold">S</div>
+            <span class="text-xs font-bold text-white">Sarah's Phone (mom@family.com)</span>
+          </div>
+          <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded">Recipient</span>
+        </div>
+
+        <div id="sarahEmpty" class="text-center py-8 text-xs text-slate-500 border-2 border-dashed border-slate-800 rounded-xl">
+          Waiting for Alex to share a link...
+        </div>
+
+        <!-- Recipient Resolved Card -->
+        <div id="sarahResolved" class="hidden space-y-3 animate-fadeIn">
+          <div class="bg-purple-950/40 border border-purple-500/30 rounded-xl p-2.5 text-xs text-purple-200 flex items-center space-x-2">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+            <span>Link Opened: Instant Item Resolution</span>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-lg">
+            <div class="h-32 relative bg-slate-950">
+              <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+              <div class="absolute top-2 left-2 bg-black/70 px-2 py-0.5 rounded text-[10px] text-emerald-400 font-medium">
+                Verified Photo Proof
+              </div>
+            </div>
+            <div class="p-3 space-y-1.5">
+              <div class="text-[10px] font-bold text-indigo-400 uppercase">Hallway</div>
+              <h4 class="text-sm font-bold text-white">Passport (Blue Cover)</h4>
+              <div class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20 flex items-center space-x-1">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Hallway console, top drawer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 3: Stage Pitch Talking Points -->
+  <footer class="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-indigo-950/40 border border-emerald-500/20 rounded-3xl p-6">
+    <div class="flex items-center space-x-2 text-emerald-300 font-bold text-sm mb-2">
+      <i class="fa-solid fa-microphone-lines"></i>
+      <span>Stage Demo Delivery (The 25-Second Family Share Pitch)</span>
+    </div>
+    <blockquote class="text-sm text-slate-200 italic border-l-2 border-emerald-400 pl-3">
+      "Look at the domestic transparency: Alex clicks 'Share with Family' on the passport. It copies a direct link. When Sarah opens it on her phone, she doesn't search or ask where it is—the app opens immediately to the exact Hallway console drawer and shows the photo taken when it was stored. One family, one shared map. No more lost keys."
+    </blockquote>
+  </footer>
+
+  <script>
+    const shareBtn = document.getElementById("shareActionBtn");
+    const waPreview = document.getElementById("waPreview");
+    const sarahEmpty = document.getElementById("sarahEmpty");
+    const sarahResolved = document.getElementById("sarahResolved");
+
+    shareBtn.addEventListener("click", () => {
+      shareBtn.innerHTML = '<i class="fa-solid fa-check mr-1 text-emerald-400"></i> Link Copied!';
+      shareBtn.classList.replace("bg-indigo-600", "bg-emerald-600");
+      waPreview.classList.remove("hidden");
+
+      setTimeout(() => {
+        sarahEmpty.classList.add("hidden");
+        sarahResolved.classList.remove("hidden");
+      }, 700);
+    });
+  </script>
+</body>
+</html>
+

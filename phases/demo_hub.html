@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where Is My Stuff — Unconference Stage & Architecture Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .pulse-badge { animation: pulse-subtle 2s infinite ease-in-out; }
+  </style>
+</head>
+<body class="bg-[#070b14] text-slate-100 font-sans min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur sticky top-0 z-50 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <span class="text-3xl">📍</span>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight text-white flex items-center space-x-2">
+            <span>Where Is My Stuff</span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">19/19 Tests Passed</span>
+          </h1>
+          <p class="text-xs text-slate-400">Builders Unconference Demo Hub • Powered by Divyam Claude Opus 5.5</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <a href="http://localhost:3000" target="_blank" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md shadow-indigo-600/30 transition-all flex items-center space-x-1.5">
+          <span>🚀 Launch Next.js App</span>
+        </a>
+        <a href="http://localhost:3000?demo=true" target="_blank" class="px-3.5 py-1.5 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 text-purple-300 border border-purple-500/40 text-xs font-semibold transition-all flex items-center space-x-1.5">
+          <span>⚡ Stage Safe Mode (?demo=true)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-6xl w-full mx-auto p-6 flex-1 space-y-8">
+
+    <!-- Value Prop Hero -->
+    <div class="p-6 rounded-3xl bg-gradient-to-r from-indigo-950/40 via-purple-950/30 to-pink-950/20 border border-indigo-500/20 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 max-w-2xl">
+        <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold">
+          <span>✨ 4-Phase Experience Architecture</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          Eliminating Household Chaos in Under 3 Seconds
+        </h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Manual inventory forms fail because nobody fills them out. "Where Is My Stuff" fixes household memory through 1-tap visual capture, warm conversational recall, polite return timers, and lightweight family links.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-3 shrink-0 text-center">
+        <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-2xl font-bold text-indigo-400">&le; 3s</div>
+          <div class="text-[11px] text-slate-400 font-medium">Capture to Saved</div>
+        </div>
+        <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-2xl font-bold text-emerald-400">100%</div>
+          <div class="text-[11px] text-slate-400 font-medium">Test Suite Green</div>
+        </div>
+        <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-2xl font-bold text-purple-400">Opus 5.5</div>
+          <div class="text-[11px] text-slate-400 font-medium">Vision & Recall</div>
+        </div>
+        <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-2xl font-bold text-pink-400">0ms</div>
+          <div class="text-[11px] text-slate-400 font-medium">Safe Mode Fallback</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Phases Interactive Grid -->
+    <div>
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+          <span>Interactive Phase Visual Explainers</span>
+        </h3>
+        <span class="text-xs text-slate-400">Click any card to launch its standalone judge explainer</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- Phase 1 Card -->
+        <a href="./phase_1_effortless_capture/explain_phase1.html" target="_blank" class="block p-5 rounded-2xl bg-slate-900/70 hover:bg-slate-900 border border-slate-800 hover:border-pink-500/50 transition-all group shadow-lg">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-pink-500/20 border border-pink-500/30 flex items-center justify-center text-xl text-pink-400 group-hover:scale-110 transition-transform">
+                📸
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-pink-400">Phase 1</span>
+                <h4 class="text-base font-bold text-white group-hover:text-pink-300 transition-colors">Effortless Capture</h4>
+              </div>
+            </div>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">4/4 Passed</span>
+          </div>
+          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+            Eliminates form-filling friction. Shutter snap triggers instant preview while 1-tap room & drawer pills bind location in &le;3 seconds. Batch auto-extracts multiple items via Divyam Opus 5.5.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium text-pink-400">
+            <span>Launch Camera Simulator ➔</span>
+            <span class="text-slate-500 text-[11px]">explain_phase1.html</span>
+          </div>
+        </a>
+
+        <!-- Phase 2 Card -->
+        <a href="./phase_2_humanlike_recall/explain_phase2.html" target="_blank" class="block p-5 rounded-2xl bg-slate-900/70 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition-all group shadow-lg">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-xl text-indigo-400 group-hover:scale-110 transition-transform">
+                💬
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-400">Phase 2</span>
+                <h4 class="text-base font-bold text-white group-hover:text-indigo-300 transition-colors">Humanlike Natural Recall</h4>
+              </div>
+            </div>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">5/5 Passed</span>
+          </div>
+          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+            Replaces rigid SQL/keyword search with associative reasoning. Resolves vague queries ("cable for laptop to TV") to the exact drawer compartment with photo proof.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium text-indigo-400">
+            <span>Launch Natural Query Simulator ➔</span>
+            <span class="text-slate-500 text-[11px]">explain_phase2.html</span>
+          </div>
+        </a>
+
+        <!-- Phase 3 Card -->
+        <a href="./phase_3_put_it_back_timer/explain_phase3.html" target="_blank" class="block p-5 rounded-2xl bg-slate-900/70 hover:bg-slate-900 border border-slate-800 hover:border-amber-500/50 transition-all group shadow-lg">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-xl text-amber-400 group-hover:scale-110 transition-transform">
+                ⏳
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400">Phase 3</span>
+                <h4 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors">"Put It Back" Return Timers</h4>
+              </div>
+            </div>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">5/5 Passed</span>
+          </div>
+          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+            Solves displaced item trap. 1-click borrow pills (1h, 24h) set active return countdowns, escalate politely on overdue loans, and proactively check travel context for flights.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium text-amber-400">
+            <span>Launch Timer & Escalation Simulator ➔</span>
+            <span class="text-slate-500 text-[11px]">explain_phase3.html</span>
+          </div>
+        </a>
+
+        <!-- Phase 4 Card -->
+        <a href="./phase_4_connected_household/explain_phase4.html" target="_blank" class="block p-5 rounded-2xl bg-slate-900/70 hover:bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition-all group shadow-lg">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-xl text-emerald-400 group-hover:scale-110 transition-transform">
+                🏡
+              </div>
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-400">Phase 4</span>
+                <h4 class="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">Connected Household & Share</h4>
+              </div>
+            </div>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">5/5 Passed</span>
+          </div>
+          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+            Eliminates repeated questions from family members. Email-walled household sessions with 1-click WhatsApp deep-links that open directly to the item photo and drawer path.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium text-emerald-400">
+            <span>Launch Dual-Screen Share Simulator ➔</span>
+            <span class="text-slate-500 text-[11px]">explain_phase4.html</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Test Automation Bar -->
+    <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h4 class="text-sm font-bold text-white">Full Automated Test Suite (19 Scenarios)</h4>
+        <p class="text-xs text-slate-400">Run all 4 phase test runners in a single shell command.</p>
+      </div>
+      <div class="flex items-center space-x-2 w-full sm:w-auto">
+        <code class="px-3 py-1.5 rounded-lg bg-black/60 border border-slate-800 text-[11px] font-mono text-emerald-300 truncate">
+          node phases/phase_1_.../test_phase1.js &amp;&amp; ...
+        </code>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-slate-950/60 py-4 text-center text-xs text-slate-500">
+    <p>Where Is My Stuff • The Sharma Family Prototype • Built with Divyam Claude Opus 5.5 for Builders Unconference</p>
+  </footer>
+
+</body>
+</html>
+

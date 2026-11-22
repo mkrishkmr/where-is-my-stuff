@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where Is My Stuff — Product Overview & Interactive Stage Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes pulse-subtle { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    .pulse-badge { animation: pulse-subtle 2s infinite ease-in-out; }
+    .tab-active { background-color: #4f46e5 !important; color: #ffffff !important; border-color: #6366f1 !important; }
+  </style>
+</head>
+<body class="bg-[#070b14] text-slate-100 font-sans min-h-screen flex flex-col">
+
+  <!-- Top Navigation Header -->
+  <header class="border-b border-slate-800 bg-slate-950/90 backdrop-blur sticky top-0 z-50 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <span class="text-3xl">📍</span>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight text-white flex items-center space-x-2">
+            <span>Where Is My Stuff</span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">19/19 Tests Passed</span>
+          </h1>
+          <p class="text-xs text-slate-400">Builders Unconference Final Stage Showcase • Powered by Divyam Claude Opus 5.5</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2.5">
+        <a href="http://localhost:3000" target="_blank" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-lg shadow-indigo-600/30 transition-all flex items-center space-x-1.5">
+          <span>🚀 Open Live App (Localhost:3000)</span>
+        </a>
+        <a href="http://localhost:3000?demo=true" target="_blank" class="px-3.5 py-2 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 text-purple-200 border border-purple-500/40 text-xs font-semibold transition-all">
+          <span>⚡ Stage Safe Mode (?demo=true)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Showcase Container -->
+  <main class="max-w-6xl w-full mx-auto p-4 sm:p-6 flex-1 space-y-6">
+
+    <!-- Hero Banner with Opus 5.5 Hook -->
+    <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-indigo-950/50 via-purple-950/40 to-pink-950/30 border border-indigo-500/30 shadow-2xl space-y-4">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-bold">
+        <span>✨ Opus 5.5 Core Axiom</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+        "Inventory apps ask you to be a librarian.<br>Where Is My Stuff asks you to take a photo."
+      </h2>
+      <p class="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
+        Location comes from the human (1-tap pills). Identity comes from the model (Claude Opus 5.5 vision). Users never type item names, categories, or descriptions.
+      </p>
+
+      <!-- Quick Numbers Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+        <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-2xl font-black text-indigo-400">&le; 3s</div>
+          <div class="text-xs text-slate-400 font-medium mt-0.5">Capture to Saved</div>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-2xl font-black text-emerald-400">19 / 19</div>
+          <div class="text-xs text-slate-400 font-medium mt-0.5">Tests Passed (100%)</div>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-2xl font-black text-purple-400">0 Typed Fields</div>
+          <div class="text-xs text-slate-400 font-medium mt-0.5">Form-Free Capture</div>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="text-2xl font-black text-pink-400">1-Click</div>
+          <div class="text-xs text-slate-400 font-medium mt-0.5">Family WhatsApp Link</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs for the 4 Feature Sections -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-2">
+      <button onclick="switchTab('simulator')" id="btn-simulator" class="px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm border border-transparent tab-active transition-all">
+        🎮 Live Interactive Simulator
+      </button>
+      <button onclick="switchTab('architecture')" id="btn-architecture" class="px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all">
+        🏗️ 4-Phase Architecture & Specs
+      </button>
+      <button onclick="switchTab('tests')" id="btn-tests" class="px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all">
+        🧪 19 Passed Test Cases Report
+      </button>
+      <button onclick="switchTab('script')" id="btn-script" class="px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all">
+        ⏱️ 3-Minute Stage Pitch Script
+      </button>
+    </div>
+
+    <!-- TAB 1: LIVE INTERACTIVE SIMULATOR -->
+    <div id="tab-simulator" class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Simulator Left: 1-Tap Capture & Borrow -->
+        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-4 shadow-xl">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+              <span class="w-6 h-6 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-xs">1</span>
+              <span>Smooth 1-Tap Capture (≤3s)</span>
+            </h3>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-pink-400 bg-pink-500/10 px-2 py-0.5 rounded border border-pink-500/20">Write Path</span>
+          </div>
+
+          <div class="relative rounded-xl overflow-hidden bg-black/60 border border-slate-800 aspect-video flex flex-col items-center justify-center text-center p-4" id="camera-view">
+            <div id="camera-idle" class="space-y-2">
+              <div class="text-4xl">📸</div>
+              <p class="text-xs text-slate-400">Aim phone at tech pouch / drawer</p>
+              <button onclick="simulateSnap()" class="px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-500 text-white text-xs font-bold shadow transition-all">
+                Snap Shutter Simulation
+              </button>
+            </div>
+            <div id="camera-preview" class="hidden w-full h-full flex flex-col justify-between p-3 bg-gradient-to-br from-indigo-950/60 to-purple-950/60">
+              <div class="flex justify-between items-center text-[10px] text-emerald-400 font-mono">
+                <span>PROVISIONAL PREVIEW READY (12ms)</span>
+                <span class="bg-black/60 px-2 py-0.5 rounded">OPUS 5.5 INGESTING</span>
+              </div>
+              <div class="space-y-1.5 text-left bg-black/70 p-2.5 rounded-lg border border-white/10 text-xs">
+                <div class="text-white font-bold">✨ Extracted 3 Items:</div>
+                <div class="text-[11px] text-slate-300">• Braided HDMI 2.1 Cable (6ft)</div>
+                <div class="text-[11px] text-slate-300">• 65W USB-C GaN Fast Charger</div>
+                <div class="text-[11px] text-slate-300">• SanDisk 128GB USB Flash Drive</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1-Tap Location Pills -->
+          <div class="space-y-1.5">
+            <label class="text-[11px] font-semibold text-slate-400">Select Location (1-Tap):</label>
+            <div class="flex flex-wrap gap-1.5">
+              <button onclick="selectPill(this, 'Living Room', 'TV Media Console')" class="pill-btn px-2.5 py-1 text-xs rounded-lg border border-indigo-500/40 bg-indigo-500/10 text-indigo-300 font-medium">Living Room ➔ TV Media</button>
+              <button onclick="selectPill(this, 'Office', 'Desk Drawer Left')" class="pill-btn px-2.5 py-1 text-xs rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-medium">Office ➔ Desk Left</button>
+              <button onclick="selectPill(this, 'Hallway', 'Console Top Drawer')" class="pill-btn px-2.5 py-1 text-xs rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-medium">Hallway ➔ Top Drawer</button>
+            </div>
+          </div>
+          <div id="capture-status" class="text-xs text-slate-400 italic">Select a location pill above to commit location.</div>
+        </div>
+
+        <!-- Simulator Right: Natural Conversational Recall -->
+        <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-4 shadow-xl">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+              <span class="w-6 h-6 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs">2</span>
+              <span>Humanlike Associative Recall</span>
+            </h3>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">Read Path</span>
+          </div>
+
+          <!-- Prompt chips -->
+          <div class="space-y-1.5">
+            <label class="text-[11px] font-semibold text-slate-400">Test Natural Queries:</label>
+            <div class="flex flex-wrap gap-1.5">
+              <button onclick="runQuery('that black cable for connecting my laptop to the TV')" class="px-2.5 py-1 text-xs rounded-lg border border-slate-700 bg-slate-800 hover:border-indigo-500 text-slate-300 hover:text-white transition-all">"black cable for laptop to TV"</button>
+              <button onclick="runQuery('where did we leave our blue passport for the flight?')" class="px-2.5 py-1 text-xs rounded-lg border border-slate-700 bg-slate-800 hover:border-indigo-500 text-slate-300 hover:text-white transition-all">"blue passport for flight"</button>
+              <button onclick="runQuery('where are the spare house keys?')" class="px-2.5 py-1 text-xs rounded-lg border border-slate-700 bg-slate-800 hover:border-indigo-500 text-slate-300 hover:text-white transition-all">"spare house keys"</button>
+            </div>
+          </div>
+
+          <!-- Query input -->
+          <div class="flex space-x-2">
+            <input id="query-input" type="text" placeholder="Ask like a human..." value="that black cable for connecting my laptop to the TV" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+            <button onclick="runCurrentQuery()" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all">Search</button>
+          </div>
+
+          <!-- Search Result Card -->
+          <div id="search-result" class="p-3.5 rounded-xl bg-black/40 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-white" id="res-name">Braided HDMI 2.1 Cable</span>
+              <span class="text-[10px] text-emerald-400 font-mono">0ms Match</span>
+            </div>
+            <div class="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-300 font-medium" id="res-path">
+              📍 Office ➔ Office desk drawer, left compartment
+            </div>
+            <p class="text-xs text-slate-400" id="res-opus">
+              "It's right in the left drawer of your office desk, coiled in the rear compartment next to the USB-C dock."
+            </p>
+
+            <!-- 1-Click Borrow & Share Actions -->
+            <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+              <div class="flex items-center space-x-1.5">
+                <span class="text-[10px] text-slate-400">Borrow:</span>
+                <button onclick="borrowItem('1h')" id="btn-borrow-1h" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-indigo-600 text-[10px] text-slate-300 border border-slate-700">1h</button>
+                <button onclick="borrowItem('24h')" id="btn-borrow-24h" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-indigo-600 text-[10px] text-slate-300 border border-slate-700">24h</button>
+                <button onclick="returnItem()" id="btn-return" class="hidden px-2 py-0.5 rounded bg-emerald-600 hover:bg-emerald-500 text-[10px] text-white">Return to Spot</button>
+              </div>
+              <button onclick="shareItem()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-indigo-600 text-[11px] text-slate-300 hover:text-white border border-slate-700 flex items-center space-x-1">
+                <span>💬 Family Share Link</span>
+              </button>
+            </div>
+            <div id="sim-alert-banner" class="hidden p-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-300">
+              ⏳ Active Loan: Borrowed by Alex. Due back in 60m.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 2: ARCHITECTURE & FOLDER MAP -->
+    <div id="tab-architecture" class="hidden space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-bold text-white flex items-center space-x-2">
+              <span class="w-6 h-6 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-xs">P1</span>
+              <span>Phase 1: Effortless Capture</span>
+            </h4>
+            <a href="./phase_1_effortless_capture/explain_phase1.html" target="_blank" class="text-xs text-pink-400 hover:underline">View Explainer ➔</a>
+          </div>
+          <p class="text-xs text-slate-400">
+            <strong>Folder:</strong> <code class="text-pink-300">phases/phase_1_effortless_capture/</code><br>
+            • <code>vision_engine.ts</code>: Multimodal extraction schema (Opus 5.5).<br>
+            • <code>capture_service.ts</code>: Non-blocking ingestion + disk sync.<br>
+            • <code>test_phase1.js</code>: 4 automated tests passed.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-bold text-white flex items-center space-x-2">
+              <span class="w-6 h-6 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs">P2</span>
+              <span>Phase 2: Humanlike Recall</span>
+            </h4>
+            <a href="./phase_2_humanlike_recall/explain_phase2.html" target="_blank" class="text-xs text-indigo-400 hover:underline">View Explainer ➔</a>
+          </div>
+          <p class="text-xs text-slate-400">
+            <strong>Folder:</strong> <code class="text-indigo-300">phases/phase_2_humanlike_recall/</code><br>
+            • <code>recall_engine.ts</code>: Associative candidate ranker + Opus 5.5 warm persona.<br>
+            • <code>search_service.ts</code>: Latency tracker & photo proof binder.<br>
+            • <code>test_phase2.js</code>: 5 automated tests passed.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-bold text-white flex items-center space-x-2">
+              <span class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs">P3</span>
+              <span>Phase 3: "Put It Back" Return Timer</span>
+            </h4>
+            <a href="./phase_3_put_it_back_timer/explain_phase3.html" target="_blank" class="text-xs text-amber-400 hover:underline">View Explainer ➔</a>
+          </div>
+          <p class="text-xs text-slate-400">
+            <strong>Folder:</strong> <code class="text-amber-300">phases/phase_3_put_it_back_timer/</code><br>
+            • <code>timer_engine.ts</code>: Overdue escalation + travel departure context.<br>
+            • <code>timer_service.ts</code>: Borrow, return, and loan mutator.<br>
+            • <code>test_phase3.js</code>: 5 automated tests passed.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-bold text-white flex items-center space-x-2">
+              <span class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">P4</span>
+              <span>Phase 4: Connected Household & Share</span>
+            </h4>
+            <a href="./phase_4_connected_household/explain_phase4.html" target="_blank" class="text-xs text-emerald-400 hover:underline">View Explainer ➔</a>
+          </div>
+          <p class="text-xs text-slate-400">
+            <strong>Folder:</strong> <code class="text-emerald-300">phases/phase_4_connected_household/</code><br>
+            • <code>session_service.ts</code>: Email-walled Sharma household accounts.<br>
+            • <code>share_engine.ts</code>: 1-click WhatsApp deep-link builder and parser.<br>
+            • <code>test_phase4.js</code>: 5 automated tests passed.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 3: 19 PASSED TEST CASES REPORT -->
+    <div id="tab-tests" class="hidden space-y-4">
+      <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <span class="text-2xl">✅</span>
+          <div>
+            <h4 class="text-sm font-bold text-emerald-300">19 of 19 Test Cases Passed Across All 4 Phases</h4>
+            <p class="text-xs text-emerald-400/80">Full test report logged in product_thinking/test_cases_passed_all_phases.md</p>
+          </div>
+        </div>
+        <code class="px-2.5 py-1 rounded bg-black/40 text-xs font-mono text-emerald-300">0 FAILED • 100% GREEN</code>
+      </div>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-800">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-slate-900/90 text-slate-400 border-b border-slate-800">
+            <tr>
+              <th class="p-3">ID</th>
+              <th class="p-3">Phase</th>
+              <th class="p-3">Scenario Name</th>
+              <th class="p-3">Target / Query</th>
+              <th class="p-3">Latency</th>
+              <th class="p-3">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 bg-slate-900/40 text-slate-300">
+            <tr><td class="p-3 font-mono text-pink-400">TC-P1-01</td><td class="p-3">Phase 1</td><td>Shutter & Provisional Preview</td><td>Camera snap simulation</td><td class="p-3 font-mono">12ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-pink-400">TC-P1-02</td><td class="p-3">Phase 1</td><td>1-Tap Location Pill Binding</td><td>Stage Demo Pouch</td><td class="p-3 font-mono">0ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-pink-400">TC-P1-03</td><td class="p-3">Phase 1</td><td>Batch Auto-Extraction</td><td>Prop Tech Pouch Photo (Opus 5.5)</td><td class="p-3 font-mono">1.4s</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-pink-400">TC-P1-04</td><td class="p-3">Phase 1</td><td>Catalog Append Integrity</td><td>Batch write to items.json</td><td class="p-3 font-mono">1ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-indigo-400">TC-P2-01</td><td class="p-3">Phase 2</td><td>Vague Tech Accessory Recall</td><td>"black cable for laptop to TV"</td><td class="p-3 font-mono">0ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-indigo-400">TC-P2-02</td><td class="p-3">Phase 2</td><td>Travel Document Intent Matching</td><td>"blue passport for the flight"</td><td class="p-3 font-mono">0ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-indigo-400">TC-P2-03</td><td class="p-3">Phase 2</td><td>Household Entry Key Recall</td><td>"where are the spare house keys?"</td><td class="p-3 font-mono">0ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-indigo-400">TC-P2-04</td><td class="p-3">Phase 2</td><td>Compound Intent Disambiguation</td><td>"headphones for the flight"</td><td class="p-3 font-mono">0ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-indigo-400">TC-P2-05</td><td class="p-3">Phase 2</td><td>Nightstand Phone Charger</td><td>"white fast charger in bedroom"</td><td class="p-3 font-mono">0ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-amber-400">TC-P3-01</td><td class="p-3">Phase 3</td><td>1-Click Borrow Action (60 mins)</td><td>Braided HDMI 2.1 Cable</td><td class="p-3 font-mono">1ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-amber-400">TC-P3-02</td><td class="p-3">Phase 3</td><td>Active Loan Household Alert</td><td>Query getHouseholdAlerts()</td><td class="p-3 font-mono">1ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-amber-400">TC-P3-03</td><td class="p-3">Phase 3</td><td>Overdue Loan Urgency Escalation</td><td>Simulated past due timestamp</td><td class="p-3 font-mono">1ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-amber-400">TC-P3-04</td><td class="p-3">Phase 3</td><td>Mark Returned Action</td><td>Clear borrow state</td><td class="p-3 font-mono">1ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-amber-400">TC-P3-05</td><td class="p-3">Phase 3</td><td>Proactive Travel Departure Check</td><td>Flight AI 102 to London</td><td class="p-3 font-mono">1ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-emerald-400">TC-P4-01</td><td class="p-3">Phase 4</td><td>Predefined Member Resolution</td><td>alex@family.com, mom@family.com</td><td class="p-3 font-mono">0ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-emerald-400">TC-P4-02</td><td class="p-3">Phase 4</td><td>Custom Email Auto-Provisioning</td><td>priya@family.com</td><td class="p-3 font-mono">0ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-emerald-400">TC-P4-03</td><td class="p-3">Phase 4</td><td>1-Click Share Deep-Link Gen</td><td>Passport (Blue Cover)</td><td class="p-3 font-mono">0ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-emerald-400">TC-P4-04</td><td class="p-3">Phase 4</td><td>Recipient Link Parsing & Retrieval Path</td><td>?item=item-1&find=Passport</td><td class="p-3 font-mono">1ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+            <tr><td class="p-3 font-mono text-emerald-400">TC-P4-05</td><td class="p-3">Phase 4</td><td>Fallback Resilience for Missing Items</td><td>?item=non-existent-999</td><td class="p-3 font-mono">0ms</td><td class="p-3 text-emerald-400 font-bold">PASSED</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 4: 3-MINUTE STAGE PITCH SCRIPT -->
+    <div id="tab-script" class="hidden space-y-4">
+      <div class="p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-4">
+        <h4 class="text-base font-bold text-white">3-Minute Stage Demo Sequence</h4>
+        
+        <div class="space-y-3 text-xs text-slate-300">
+          <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+            <span class="text-pink-400 font-bold font-mono">00:00 - 00:45</span>
+            <p class="font-semibold text-white mt-1">Hook: The Problem with Traditional Inventory Apps</p>
+            <p class="text-slate-400 mt-0.5">"Everyone downloads an inventory app once, spends 60 seconds entering item names and SKUs, gets exhausted, and never opens it again. Where Is My Stuff turns this upside down."</p>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+            <span class="text-pink-400 font-bold font-mono">00:45 - 01:30</span>
+            <p class="font-semibold text-white mt-1">Live Capture: 1-Tap Pills, Zero Typing</p>
+            <p class="text-slate-400 mt-0.5">Snap a photo of the stage pouch. Tap 'Living Room' and 'Media Console'. In under 3 seconds, Opus 5.5 auto-tags the HDMI cable, charger, and flash drive. No keyboard ever appeared.</p>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+            <span class="text-indigo-400 font-bold font-mono">01:30 - 02:15</span>
+            <p class="font-semibold text-white mt-1">Conversational Recall & Photo Proof</p>
+            <p class="text-slate-400 mt-0.5">Ask: "where did I put that black cord for the TV?" Instant answer in warm natural language with the exact drawer compartment and photo proof.</p>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
+            <span class="text-amber-400 font-bold font-mono">02:15 - 03:00</span>
+            <p class="font-semibold text-white mt-1">Closing: Borrow Timers & Family Share</p>
+            <p class="text-slate-400 mt-0.5">Tap '1h' to borrow the cable. Show the return countdown banner. Tap 'Share with Family' to generate the 1-click WhatsApp deep-link. Conclude: household memory solved without the friction.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-500">
+    Where Is My Stuff • The Sharma Family Prototype • Divyam Claude Opus 5.5 • 100% Test Green
+  </footer>
+
+  <script>
+    function switchTab(tabId) {
+      ['simulator', 'architecture', 'tests', 'script'].forEach(t => {
+        document.getElementById('tab-' + t).classList.add('hidden');
+        const btn = document.getElementById('btn-' + t);
+        btn.className = 'px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all';
+      });
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+      const activeBtn = document.getElementById('btn-' + tabId);
+      activeBtn.className = 'px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm border border-transparent tab-active transition-all';
+    }
+
+    function simulateSnap() {
+      document.getElementById('camera-idle').classList.add('hidden');
+      document.getElementById('camera-preview').classList.remove('hidden');
+      document.getElementById('capture-status').innerText = 'Photo captured! Tap a location pill to bind location.';
+    }
+
+    function selectPill(btn, room, loc) {
+      document.querySelectorAll('.pill-btn').forEach(b => {
+        b.className = 'pill-btn px-2.5 py-1 text-xs rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-medium';
+      });
+      btn.className = 'pill-btn px-2.5 py-1 text-xs rounded-lg border border-pink-500/40 bg-pink-500/20 text-pink-300 font-bold';
+      document.getElementById('capture-status').innerHTML = `<span class="text-emerald-400 font-semibold">✅ Saved to ${room} ➔ ${loc} in 1.4s!</span>`;
+    }
+
+    const DEMO_ITEMS = {
+      cable: {
+        name: "Braided HDMI 2.1 Cable",
+        path: "📍 Office ➔ Office desk drawer, left compartment",
+        answer: "Coiled neatly in the left drawer of your office desk next to the USB-C dock."
+      },
+      passport: {
+        name: "Passport (Blue Cover)",
+        path: "📍 Hallway ➔ Hallway console, top drawer",
+        answer: "Safe inside the leather travel wallet in your hallway console top drawer."
+      },
+      keys: {
+        name: "Spare House Keys",
+        path: "📍 Kitchen ➔ Kitchen key bowl near entrance",
+        answer: "Resting in the ceramic key bowl on the kitchen counter right by the front entrance."
+      }
+    };
+
+    function runQuery(q) {
+      document.getElementById('query-input').value = q;
+      runCurrentQuery();
+    }
+
+    function runCurrentQuery() {
+      const q = document.getElementById('query-input').value.toLowerCase();
+      let match = DEMO_ITEMS.cable;
+      if (q.includes('passport') || q.includes('flight')) match = DEMO_ITEMS.passport;
+      else if (q.includes('key')) match = DEMO_ITEMS.keys;
+
+      document.getElementById('res-name').innerText = match.name;
+      document.getElementById('res-path').innerText = match.path;
+      document.getElementById('res-opus').innerText = `"${match.answer}"`;
+    }
+
+    function borrowItem(dur) {
+      document.getElementById('sim-alert-banner').innerText = `⏳ Active Loan: Borrowed by Alex (${dur}). Due back soon.`;
+      document.getElementById('sim-alert-banner').classList.remove('hidden');
+      document.getElementById('btn-borrow-1h').classList.add('hidden');
+      document.getElementById('btn-borrow-24h').classList.add('hidden');
+      document.getElementById('btn-return').classList.remove('hidden');
+    }
+
+    function returnItem() {
+      document.getElementById('sim-alert-banner').innerText = `✅ Returned to designated drawer spot! Alert cleared.`;
+      setTimeout(() => {
+        document.getElementById('sim-alert-banner').classList.add('hidden');
+        document.getElementById('btn-borrow-1h').classList.remove('hidden');
+        document.getElementById('btn-borrow-24h').classList.remove('hidden');
+        document.getElementById('btn-return').classList.add('hidden');
+      }, 1500);
+    }
+
+    function shareItem() {
+      const name = document.getElementById('res-name').innerText;
+      const url = `http://localhost:3000?item=item-1&find=${encodeURIComponent(name)}`;
+      navigator.clipboard.writeText(url);
+      alert(`Copied WhatsApp deep-link to clipboard:\n${url}`);
+    }
+  </script>
+</body>
+</html>

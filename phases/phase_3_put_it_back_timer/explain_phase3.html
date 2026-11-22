@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phase 3 Architecture Explainer — 'Put It Back' Return Timer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { background-color: #070b14; color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  </style>
+</head>
+<body class="p-4 sm:p-8 max-w-5xl mx-auto space-y-8">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 pb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div>
+      <div class="flex items-center space-x-2">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20">
+          Phase 3 Architecture
+        </span>
+        <span class="text-xs text-slate-400">• Powered by Divyam Claude Opus 5.5</span>
+      </div>
+      <h1 class="text-3xl font-extrabold text-white mt-2 tracking-tight">The "Put It Back" Return Timer Experience</h1>
+      <p class="text-sm text-slate-400 mt-1">
+        Closing the broken borrowing loop &bull; Proactive return notifications &bull; Domestic harmony without nagging.
+      </p>
+    </div>
+    <div class="flex items-center space-x-2 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs">
+      <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+      <span class="font-medium text-slate-300">Phase 3 Target: Proactive Accountability</span>
+    </div>
+  </header>
+
+  <!-- Section 1: The Displaced Item Trap -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="bg-rose-950/20 border border-rose-500/30 rounded-2xl p-5 space-y-2">
+      <div class="flex items-center space-x-2 text-rose-400 font-bold text-sm">
+        <i class="fa-solid fa-arrows-split-up-and-left"></i>
+        <span>The Displaced Item Trap</span>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Belongings rarely vanish into thin air. They get <em>displaced</em>. A family member borrows a charger, takes it to the couch or car, and leaves it there. 
+        It becomes findable only by someone who remembers the full borrowing history—which is the exact person who forgot.
+      </p>
+    </div>
+
+    <div class="bg-amber-950/20 border border-amber-500/30 rounded-2xl p-5 space-y-2">
+      <div class="flex items-center space-x-2 text-amber-400 font-bold text-sm">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <span>1-Click Borrow & Remind</span>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Tapping <strong>"1h"</strong> or <strong>"24h"</strong> assigns the return to a specific person and due time. The entire household can see who has it, eliminating the recurring friction of: <em>"Where did you leave my cable this time?"</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 2: Live Interactive Borrow & Return Simulator -->
+  <section class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
+    <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+      <div>
+        <h2 class="text-lg font-bold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-play text-amber-400"></i>
+          <span>Interactive Borrow & Return Simulator</span>
+        </h2>
+        <p class="text-xs text-slate-400">Click a duration button below to simulate borrowing an item on stage.</p>
+      </div>
+      <button id="simResetBtn" class="text-xs text-slate-400 hover:text-white px-3 py-1 bg-slate-800 rounded-lg">
+        Reset
+      </button>
+    </div>
+
+    <!-- Proactive Household Banner (Dynamic) -->
+    <div id="proactiveAlert" class="bg-gradient-to-r from-amber-950/80 via-slate-900 to-amber-950/60 border border-amber-500/40 rounded-2xl p-4 shadow-xl flex items-start justify-between gap-3">
+      <div class="flex items-start space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/30 mt-0.5">
+          <i class="fa-solid fa-bell text-base"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span id="alertBadge" class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">
+              Active Borrow Timer
+            </span>
+            <span class="text-xs text-slate-400">&bull; Household Reminder</span>
+          </div>
+          <h3 id="alertTitle" class="text-sm font-semibold text-white mt-1">
+            Alex borrowed "Braided HDMI 2.1 Cable"
+          </h3>
+          <p id="alertBody" class="text-xs text-slate-300 mt-0.5">
+            Due back in Office desk drawer, left compartment in 59 minutes.
+          </p>
+        </div>
+      </div>
+      <button id="simReturnBtn" class="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center space-x-1 shadow-md">
+        <i class="fa-solid fa-rotate-left mr-1"></i>Mark Returned
+      </button>
+    </div>
+
+    <!-- Item Card with Borrow Controls -->
+    <div class="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col sm:flex-row shadow-lg max-w-xl mx-auto">
+      <div class="sm:w-48 h-40 sm:h-auto relative bg-slate-900 shrink-0">
+        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+        <div id="cardStatusBadge" class="absolute bottom-2 left-2 right-2 px-2 py-1 rounded text-[11px] font-semibold text-center backdrop-blur bg-amber-950/90 text-amber-300 border border-amber-500/40">
+          Borrowed by Alex (Due in 59m)
+        </div>
+      </div>
+      <div class="p-4 flex-1 space-y-3 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">Office</span>
+            <span class="text-[11px] text-slate-400"><i class="fa-solid fa-shield-check text-emerald-400 mr-1"></i>In Catalog</span>
+          </div>
+          <h3 class="text-base font-bold text-white mt-1">Braided HDMI 2.1 Cable</h3>
+          <p class="text-xs text-slate-300">Black nylon 2-meter cable with gold-plated connectors.</p>
+        </div>
+
+        <div class="space-y-2 pt-2 border-t border-slate-800">
+          <div class="flex items-center space-x-1.5 text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1.5 rounded-lg border border-emerald-500/20 font-semibold">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Office desk drawer, left compartment</span>
+          </div>
+
+          <div class="flex items-center justify-between pt-1">
+            <span class="text-[11px] text-slate-400 font-medium">Borrow with timer:</span>
+            <div class="flex space-x-1.5">
+              <button class="dur-btn text-xs font-semibold px-2.5 py-1 bg-amber-600 text-white rounded border border-amber-500" data-dur="1h">1h</button>
+              <button class="dur-btn text-xs font-semibold px-2.5 py-1 bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white rounded border border-slate-700" data-dur="4h">4h</button>
+              <button class="dur-btn text-xs font-semibold px-2.5 py-1 bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white rounded border border-slate-700" data-dur="24h">24h</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Proactive Context Sentinel -->
+  <section class="bg-gradient-to-r from-blue-950/40 via-indigo-950/30 to-purple-950/40 border border-blue-500/30 rounded-3xl p-6 space-y-3">
+    <div class="flex items-center space-x-2 text-blue-400 font-bold text-sm">
+      <i class="fa-solid fa-plane-departure"></i>
+      <span>Proactive Travel Departure Sentinel</span>
+    </div>
+    <div class="bg-slate-950/70 border border-slate-800 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div>
+        <div class="text-[11px] text-blue-300 uppercase font-semibold">Detected Context: Flight AI 102 Tomorrow (06:30 AM)</div>
+        <h4 class="text-sm font-bold text-white mt-0.5">Passport Location Proactively Verified</h4>
+        <p class="text-xs text-slate-300 mt-0.5">Your passport is resting in <strong>Hallway console, top drawer</strong>. Ready for departure.</p>
+      </div>
+      <span class="text-xs font-semibold px-3 py-1.5 bg-blue-600/30 text-blue-300 border border-blue-500/40 rounded-xl">
+        <i class="fa-solid fa-circle-check mr-1 text-blue-400"></i>Pre-Departure Ready
+      </span>
+    </div>
+  </section>
+
+  <!-- Stage Pitch Delivery Footer -->
+  <footer class="bg-gradient-to-r from-amber-950/40 via-slate-900 to-indigo-950/40 border border-amber-500/20 rounded-3xl p-6">
+    <div class="flex items-center space-x-2 text-amber-300 font-bold text-sm mb-2">
+      <i class="fa-solid fa-microphone-lines"></i>
+      <span>Stage Demo Delivery (The 25-Second Accountability Pitch)</span>
+    </div>
+    <blockquote class="text-sm text-slate-200 italic border-l-2 border-amber-400 pl-3">
+      "Things don't vanish because people steal them; they vanish because family members borrow them and forget to put them back. Watch: I tap '1h' on the HDMI cable. Instantly, the household dashboard shows it's out on loan to Alex. When the timer expires, the app pings: 'Time to put the cable back in the Office desk drawer'. No nagging. No interrogations. The loop is closed."
+    </blockquote>
+  </footer>
+
+  <script>
+    const alertBox = document.getElementById("proactiveAlert");
+    const alertBadge = document.getElementById("alertBadge");
+    const alertTitle = document.getElementById("alertTitle");
+    const alertBody = document.getElementById("alertBody");
+    const cardStatus = document.getElementById("cardStatusBadge");
+    const simReturnBtn = document.getElementById("simReturnBtn");
+    const simResetBtn = document.getElementById("simResetBtn");
+    const durBtns = document.querySelectorAll(".dur-btn");
+
+    durBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const dur = btn.getAttribute("data-dur");
+        durBtns.forEach(b => b.className = "dur-btn text-xs font-semibold px-2.5 py-1 bg-slate-800 text-slate-300 rounded border border-slate-700");
+        btn.className = "dur-btn text-xs font-semibold px-2.5 py-1 bg-amber-600 text-white rounded border border-amber-500";
+        
+        cardStatus.className = "absolute bottom-2 left-2 right-2 px-2 py-1 rounded text-[11px] font-semibold text-center backdrop-blur bg-amber-950/90 text-amber-300 border border-amber-500/40";
+        cardStatus.textContent = `Borrowed by Alex (Due in ${dur})`;
+        
+        alertBox.classList.remove("hidden");
+        alertBadge.textContent = "Active Borrow Timer";
+        alertTitle.textContent = `Alex borrowed "Braided HDMI 2.1 Cable"`;
+        alertBody.textContent = `Due back in Office desk drawer, left compartment in ${dur}.`;
+      });
+    });
+
+    simReturnBtn.addEventListener("click", () => {
+      cardStatus.className = "absolute bottom-2 left-2 right-2 px-2 py-1 rounded text-[11px] font-semibold text-center backdrop-blur bg-emerald-950/90 text-emerald-300 border border-emerald-500/40";
+      cardStatus.textContent = "In designated spot: Office desk drawer";
+      alertBox.classList.add("hidden");
+    });
+
+    simResetBtn.addEventListener("click", () => {
+      alertBox.classList.remove("hidden");
+      cardStatus.className = "absolute bottom-2 left-2 right-2 px-2 py-1 rounded text-[11px] font-semibold text-center backdrop-blur bg-amber-950/90 text-amber-300 border border-amber-500/40";
+      cardStatus.textContent = "Borrowed by Alex (Due in 59m)";
+      alertBadge.textContent = "Active Borrow Timer";
+      alertTitle.textContent = 'Alex borrowed "Braided HDMI 2.1 Cable"';
+      alertBody.textContent = "Due back in Office desk drawer, left compartment in 59 minutes.";
+    });
+  </script>
+</body>
+</html>
+
